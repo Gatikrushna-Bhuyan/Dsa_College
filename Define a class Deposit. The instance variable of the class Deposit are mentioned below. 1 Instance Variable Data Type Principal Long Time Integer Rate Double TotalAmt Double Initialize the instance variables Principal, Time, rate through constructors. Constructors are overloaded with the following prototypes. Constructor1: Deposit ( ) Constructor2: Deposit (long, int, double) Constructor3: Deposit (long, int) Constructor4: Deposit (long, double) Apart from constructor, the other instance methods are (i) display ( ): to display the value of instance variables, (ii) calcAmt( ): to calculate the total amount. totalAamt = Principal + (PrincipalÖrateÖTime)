@@ -1,0 +1,62 @@
+class Deposit {
+    private long principal;
+    private int time;
+    private double rate;
+    private double totalAmt;
+
+    // Constructor 1: Default constructor
+    public Deposit() {
+        this.principal = 0;
+        this.time = 0;
+        this.rate = 0.0;
+        this.totalAmt = 0.0;
+    }
+
+    // Constructor 2: Constructor with principal, time, and rate
+    public Deposit(long principal, int time, double rate) {
+        this.principal = principal;
+        this.time = time;
+        this.rate = rate;
+        this.calcAmt();
+    }
+
+    // Constructor 3: Constructor with principal and time
+    public Deposit(long principal, int time) {
+        this(principal, time, 0.0); // Call constructor 2 with rate = 0.0 ********
+    }
+
+    // Constructor 4: Constructor with principal and rate
+    public Deposit(long principal, double rate) {
+        this(principal, 0, rate); // Call constructor 2 with time = 0
+    }
+
+    // Method to display instance variables
+    public void display() {
+        System.out.println("Principal: " + principal);
+        System.out.println("Time: " + time);
+        System.out.println("Rate: " + rate);
+        System.out.println("Total Amount: " + totalAmt);
+    }
+
+    // Method to calculate total amount
+    public void calcAmt() {
+        totalAmt = principal + (principal * rate * time) / 100.0;
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        // Create instances of Deposit using different constructors
+        Deposit deposit1 = new Deposit();
+        deposit1.display(); // Display default values
+
+        Deposit deposit2 = new Deposit(10000, 2, 5.0);
+        deposit2.display(); // Display values initialized by constructor 2
+
+        Deposit deposit3 = new Deposit(5000, 3);
+        deposit3.display(); // Display values initialized by constructor 3
+
+        Deposit deposit4 = new Deposit(20000, 7.5);
+        deposit4.display(); // Display values initialized by constructor 4
+    }
+}
