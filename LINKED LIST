@@ -1,0 +1,78 @@
+public class LinkedList {
+
+    // Define a Node class representing individual elements in the linked list
+    private static class Node {
+        int data;
+        Node next;
+
+        Node(int data) {
+            this.data = data;
+            this.next = null;
+        }
+    }
+
+    private Node head; // Head of the linked list
+
+    // Method to insert a new node at the beginning of the linked list
+    public void insertFirst(int data) {
+        Node newNode = new Node(data); // Create a new node with the given data
+        newNode.next = head; // Set the next pointer of the new node to the current head
+        head = newNode; // Update the head to point to the new node
+    }
+
+    // Method to insert a new node after a given node
+    public void insertAfter(Node prevNode, int data) {
+        if (prevNode == null) {
+            System.out.println("Previous node cannot be null");
+            return;
+        }
+        Node newNode = new Node(data); // Create a new node with the given data
+        newNode.next = prevNode.next; // Set the next pointer of the new node to the next node of the previous node
+        prevNode.next = newNode; // Update the next pointer of the previous node to point to the new node
+    }
+
+    // Method to insert a new node at the end of the linked list
+    public void insertLast(int data) {
+        Node newNode = new Node(data); // Create a new node with the given data
+        if (head == null) {
+            head = newNode; // If the list is empty, make the new node the head
+            return;
+        }
+        Node last = head; // Start traversal from the head
+        while (last.next != null) {
+            last = last.next; // Traverse until the last node
+        }
+        last.next = newNode; // Set the next pointer of the last node to the new node
+    }
+
+    // Method to display the linked list
+    public void display() {
+        Node current = head; // Start traversal from the head
+        while (current != null) {
+            System.out.print(current.data + " -> "); // Print the data of the current node
+            current = current.next; // Move to the next node
+        }
+        System.out.println("null");
+    }
+
+    // Main method to test the LinkedList class
+    public static void main(String[] args) {
+        LinkedList list = new LinkedList(); // Create a new instance of the LinkedList class
+
+        // Insert nodes at the beginning
+        list.insertFirst(3);
+        list.insertFirst(2);
+        list.insertFirst(1);
+
+        // Insert nodes after a given node
+        Node secondNode = list.head.next;
+        list.insertAfter(secondNode, 89);
+
+        // Insert nodes at the end
+        list.insertLast(4);
+        list.insertLast(5);
+
+        // Display the linked list
+        list.display();
+    }
+}
