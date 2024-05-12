@@ -1,0 +1,44 @@
+class LL{
+    private Node head;
+    private Node trail;
+    private int count; 
+    public LL(){
+        this.count = 0;
+    } 
+    class Node {
+        private int value;
+        private Node next;
+        String st;
+    public Node(int value,String str){
+        this.value = value;
+        this.st = str;
+        
+        
+    }} 
+public void insertdata(int value,String str){
+    Node temp = new Node(value,str);
+    temp.next = head;
+    head = temp;
+    count+=1;
+}
+public void showdata(){
+    Node temp = head;
+    while(temp != null){
+        System.out.print(temp.value +temp.st + " - > ");
+        temp = temp.next;
+    }
+    System.out.println("End");
+    System.out.println("Total count is : " + count);
+}
+}
+public class Main{
+public static void main(String [] args){
+   LL list = new LL();
+   list.insertdata(2,"ram");
+   list.insertdata(3,"krishna");
+   list.insertdata(5,"shyam");
+   list.insertdata(8,"balram");
+   list.insertdata(90,"madhumangal");
+   list.showdata();
+   
+}}
